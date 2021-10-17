@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+public class PlayerCamera : MonoBehaviour
 {
-     [SerializeField] private float speed = 1.0f;
+    [SerializeField] private Transform player;
+    [SerializeField] private Vector3 offset;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class Coin : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up, Time.deltaTime * speed);
+        transform = player + offset;
+        
     }
 }

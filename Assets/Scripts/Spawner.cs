@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public Transform coinPrefab;
-    public Transform wiese;
-    public float offsetY;
+    [SerializeField] private Transform coinPrefab;
+    [SerializeField] private Transform wiese;
+    [SerializeField] private float offsetY;
 
-    public int anzahl;
+    [SerializeField] private int anzahl;
 
     // Start is called before the first frame update
     void Start(){
