@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spieler : MonoBehaviour
 {
 
+    [SerializeField] private float speed;
     private float angle = 0;
 
     private int coins = 0;
@@ -25,7 +26,7 @@ public class Spieler : MonoBehaviour
         Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad*angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
         transform.rotation = Quaternion.LookRotation(direction);
         //transform.Translate(direction* moveVertical,transform);
-        transform.position += direction * moveVertical;
+        transform.position += direction * moveVertical * speed;
     }
 
     void OnTriggerEnter(Collider other){
@@ -34,6 +35,13 @@ public class Spieler : MonoBehaviour
             coins++;
             Debug.Log("Yeah!!! Add 1 Coin to your wallet!");
             Debug.Log("Wallet: " + coins + " Coins.");
+        }
+
+        if(other.CompareTag("Enemy")){
+            Destroy(other.gameObject);
+            coins++;
+            Debug.Log("Game over!");
+            Destroy(this.gameObject);
         }
     }
 }
