@@ -7,6 +7,8 @@ public class Spieler : MonoBehaviour
 
     private float angle = 0;
 
+    private int coins = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +26,14 @@ public class Spieler : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction);
         //transform.Translate(direction* moveVertical,transform);
         transform.position += direction * moveVertical;
+    }
 
-
+    void OnTriggerEnter(Collider other){
+        if(other.CompareTag("Coin")){
+            Destroy(other.gameObject);
+            coins++;
+            Debug.Log("Yeah!!! Add 1 Coin to your wallet!");
+            Debug.Log("Wallet: " + coins + " Coins.");
+        }
     }
 }

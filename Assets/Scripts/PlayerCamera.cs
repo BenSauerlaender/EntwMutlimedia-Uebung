@@ -16,7 +16,10 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform = player + offset;
-        
+        transform.position = player.position + player.rotation*offset;
+        transform.rotation = player.rotation;
+        transform.Rotate(new Vector3(40,0,0));
     }
+
+    
 }
