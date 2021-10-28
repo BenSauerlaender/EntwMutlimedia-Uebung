@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spieler : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Spieler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float moveVertical = Input.GetAxis("Vertical") * Time.deltaTime;
         angle += Input.GetAxis("Horizontal") * Time.deltaTime * 50;
@@ -25,7 +26,6 @@ public class Spieler : MonoBehaviour
         if (angle < 0) angle += 360;
         Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad*angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
         transform.rotation = Quaternion.LookRotation(direction);
-        //transform.Translate(direction* moveVertical,transform);
         transform.position += direction * moveVertical * speed;
     }
 
@@ -42,6 +42,7 @@ public class Spieler : MonoBehaviour
             coins++;
             Debug.Log("Game over!");
             Destroy(this.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }
