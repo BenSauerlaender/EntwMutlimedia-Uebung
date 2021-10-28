@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Spieler : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class Spieler : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float moveVertical = Input.GetAxis("Vertical") * Time.deltaTime;
         angle += Input.GetAxis("Horizontal") * Time.deltaTime * 50;
@@ -42,6 +43,7 @@ public class Spieler : MonoBehaviour
             coins++;
             Debug.Log("Game over!");
             Destroy(this.gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 }

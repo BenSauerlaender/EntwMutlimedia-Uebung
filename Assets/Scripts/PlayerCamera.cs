@@ -14,7 +14,7 @@ public class PlayerCamera : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(player != null){
             transform.position = player.position + player.rotation*offset;

@@ -18,7 +18,7 @@ public class Gegner : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(target != null){
             Vector3 direction = target.position - transform.position;
