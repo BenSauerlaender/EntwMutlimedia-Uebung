@@ -26,7 +26,6 @@ public class Spieler : MonoBehaviour
         if (angle < 0) angle += 360;
         Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad*angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
         transform.rotation = Quaternion.LookRotation(direction);
-        //transform.Translate(direction* moveVertical,transform);
         transform.position += direction * moveVertical * speed;
     }
 
