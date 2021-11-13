@@ -21,7 +21,7 @@ public class Spieler : MonoBehaviour
     void FixedUpdate()
     {
         float moveVertical = Input.GetAxis("Vertical") * Time.deltaTime;
-        angle += Input.GetAxis("Horizontal") * Time.deltaTime * 50;
+        angle += Input.GetAxis("Horizontal") * Time.deltaTime * 100;
         if (angle >= 360) angle -= 360;
         if (angle < 0) angle += 360;
         Vector3 direction = new Vector3(Mathf.Sin(Mathf.Deg2Rad*angle), 0, Mathf.Cos(Mathf.Deg2Rad * angle));
