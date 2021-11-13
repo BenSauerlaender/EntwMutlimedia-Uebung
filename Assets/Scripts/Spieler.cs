@@ -7,6 +7,8 @@ public class Spieler : MonoBehaviour
 {
 
     [SerializeField] private float speed;
+
+    [SerializeField] private bool godmode;
     private float angle = 0;
 
     private int coins = 0;
@@ -37,7 +39,7 @@ public class Spieler : MonoBehaviour
             Debug.Log("Wallet: " + coins + " Coins.");
         }
 
-        if(other.CompareTag("Enemy")){
+        if(other.CompareTag("Enemy") && !godmode){
             Destroy(other.gameObject);
             coins++;
             Debug.Log("Game over!");
