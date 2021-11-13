@@ -20,8 +20,7 @@ public class Spawner : MonoBehaviour
         for(int i = 0; i < coinAnzahl; i++){
 
             float x = UnityEngine.Random.Range(wiese.localPosition.x - wiese.localScale.x / 2, wiese.localPosition.x + wiese.localScale.x / 2);
-            Debug.Log(wiese.localPosition.x);
-            Debug.Log(wiese.localScale.x);
+            
             float y = wiese.position.y + wiese.localScale.y / 2 + offsetY*wiese.localScale.y;
             float z = UnityEngine.Random.Range(wiese.localPosition.z - wiese.localScale.z / 2, wiese.localPosition.z + wiese.localScale.z / 2);
             Vector3 position = new Vector3(x,y,z);
@@ -35,8 +34,8 @@ public class Spawner : MonoBehaviour
             float y = wiese.position.y + wiese.localScale.y / 2 + offsetY*wiese.localScale.y;
             float z = UnityEngine.Random.Range(wiese.localPosition.z - wiese.localScale.z / 2, wiese.localPosition.z + wiese.localScale.z / 2);
             Vector3 position = new Vector3(x,y,z);
-            Transform gegner = Instantiate(coinPrefab, new Vector3(0,0,0), Quaternion.identity,root);
-            gegner.SetPositionAndRotation(position,Quaternion.identity);
+            Transform gegner = Instantiate(gegnerPrefab, new Vector3(0,0,0), Quaternion.identity,root);
+            gegner.GetComponent<Gegner>().setTarget(spieler);
             gegner.transform.localPosition = position;
 
         }
