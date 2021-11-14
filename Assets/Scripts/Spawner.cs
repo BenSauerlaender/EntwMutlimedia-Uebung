@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [SerializeField] private Transform root;
     [SerializeField] private Transform spieler;
     [SerializeField] private Transform coinPrefab;
     [SerializeField] private int coinAnzahl;
@@ -15,24 +16,28 @@ public class Spawner : MonoBehaviour
     
 
     // Start is called before the first frame update
-    void Start(){
+    public void spawn(){
         for(int i = 0; i < coinAnzahl; i++){
 
-            float x = UnityEngine.Random.Range(wiese.position.x - wiese.localScale.x / 2, wiese.position.x + wiese.localScale.x / 2);
-            float y = wiese.position.y + wiese.localScale.y / 2 + offsetY;
-            float z = UnityEngine.Random.Range(wiese.position.z - wiese.localScale.z / 2, wiese.position.z + wiese.localScale.z / 2);
+            float x = UnityEngine.Random.Range(wiese.localPosition.x - wiese.localScale.x / 2, wiese.localPosition.x + wiese.localScale.x / 2);
+            
+            float y = wiese.position.y + wiese.localScale.y / 2 + offsetY*wiese.localScale.y;
+            float z = UnityEngine.Random.Range(wiese.localPosition.z - wiese.localScale.z / 2, wiese.localPosition.z + wiese.localScale.z / 2);
             Vector3 position = new Vector3(x,y,z);
-            Instantiate(coinPrefab, position, Quaternion.identity);
+            Transform coin = Instantiate(coinPrefab, new Vector3(0,0,0), Quaternion.identity,root);
+            coin.transform.localPosition = position;
         }
 
         for(int i = 0; i < gegnerAnzahl; i++){
 
-            float x = UnityEngine.Random.Range(wiese.position.x - wiese.localScale.x / 2, wiese.position.x + wiese.localScale.x / 2);
-            float y = wiese.position.y + wiese.localScale.y / 2 + offsetY;
-            float z = UnityEngine.Random.Range(wiese.position.z - wiese.localScale.z / 2, wiese.position.z + wiese.localScale.z / 2);
+            float x = UnityEngine.Random.Range(wiese.localPosition.x - wiese.localScale.x / 2, wiese.localPosition.x + wiese.localScale.x / 2);
+            float y = wiese.position.y + wiese.localScale.y / 2 + offsetY*wiese.localScale.y;
+            float z = UnityEngine.Random.Range(wiese.localPosition.z - wiese.localScale.z / 2, wiese.localPosition.z + wiese.localScale.z / 2);
             Vector3 position = new Vector3(x,y,z);
-            Transform gegner = Instantiate(gegnerPrefab, position, Quaternion.identity);
+            Transform gegner = Instantiate(gegnerPrefab, new Vector3(0,0,0), Quaternion.identity,root);
             gegner.GetComponent<Gegner>().setTarget(spieler);
+            gegner.transform.localPosition = position;
+
         }
         
     }
