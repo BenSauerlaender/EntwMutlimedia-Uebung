@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Vuforia;
 
+//credits: Vuforia Core Samples // https://assetstore.unity.com/packages/templates/packs/vuforia-core-samples-99026
+
 public class VirtualButtonEventHandler : MonoBehaviour
 {
     VirtualButtonBehaviour[] mVirtualButtonBehaviours;
